@@ -1,42 +1,101 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@import "tailwindcss";
+
+@theme {
+    /* Colors */
+    --color-maicer-blue: #143d8f;
+    --color-maicer-cyan: #1ca3e4;
+    --color-maicer-light: #ffffff;
+
+    /* Additional shades */
+    --color-maicer-blue-dark: #0f2d6b;
+    --color-maicer-blue-light: #1e54b7;
+    --color-maicer-cyan-dark: #1689c0;
+    --color-maicer-cyan-light: #3db5ed;
+
+    /* Font Family */
+    --font-family-poppins: 'Poppins', sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Base styles */
+@layer base {
+    html {
+        font-family: var(--font-family-poppins), sans-serif;
+    }
+
+    body {
+        background-color: var(--color-maicer-light);
+        color: var(--color-gray-900);
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
+/* Component classes */
+@layer components {
+    .btn-primary {
+        background-color: var(--color-maicer-blue);
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.5rem;
+        font-weight: 500;
+        transition: background-color 0.2s;
+    }
+
+    .btn-primary:hover {
+        background-color: var(--color-maicer-blue-dark);
+    }
+
+    .btn-secondary {
+        background-color: var(--color-maicer-cyan);
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.5rem;
+        font-weight: 500;
+        transition: background-color 0.2s;
+    }
+
+    .btn-secondary:hover {
+        background-color: var(--color-maicer-cyan-dark);
+    }
+
+    .gradient-text {
+        background: linear-gradient(to right, var(--color-maicer-blue), var(--color-maicer-cyan));
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+/* Utilities */
+@layer utilities {
+    /* Animations */
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
+    @keyframes slide-up {
+        from {
+            transform: translateY(20px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+    .animate-fade-in {
+        animation: fade-in 0.5s ease-in-out;
+    }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+    .animate-slide-up {
+        animation: slide-up 0.5s ease-out;
+    }
 }
