@@ -3,13 +3,13 @@ export default function Home() {
   return (
     <main>
       {/* Hero Section */}
-      <section className="min-h-screen bg-gradient-to-br from-maicer-blue to-maicer-cyan text-white flex items-center relative overflow-hidden">
+      <section className="min-h-screen bg-gradient-to-br from-maicer-blue to-maicer-cyan text-white flex items-center relative overflow-hidden pt-16 sm:pt-20">
         {/* Background Pattern (optional) */}
         <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:50px_50px]" />
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 z-10">
           <div className="max-w-3xl">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 animate-fade-in leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 animate-fade-in">
               Transforme o Seu Negócio com Tecnologia Digital
             </h1>
             <p className="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 text-white/90 animate-slide-up animation-delay-200">

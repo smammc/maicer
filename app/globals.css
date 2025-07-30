@@ -98,4 +98,34 @@
     .animate-slide-up {
         animation: slide-up 0.5s ease-out;
     }
+
+    /* Add smooth scroll behavior for anchor links */
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* Optional: Add focus styles for accessibility */
+    a:focus,
+    button:focus {
+        outline: 2px solid var(--color-maicer-cyan);
+        outline-offset: 2px;
+    }
+
+    /* Optional: Skip to main content link for accessibility */
+    .skip-to-main {
+        position: absolute;
+        left: -9999px;
+        z-index: 999;
+    }
+
+    .skip-to-main:focus {
+        position: fixed;
+        top: 1rem;
+        left: 1rem;
+        background: var(--color-maicer-blue);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 0.25rem;
+        text-decoration: none;
+    }
 }
