@@ -1,22 +1,87 @@
 // components/Footer.tsx
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Footer() {
+  const pathname = usePathname();
+
+  const getCurrentCompany = (): string => {
+    if (pathname.startsWith("/capital")) return "capital";
+    if (pathname.startsWith("/tech")) return "tech";
+    if (pathname.startsWith("/law")) return "law";
+    if (pathname.startsWith("/media")) return "media";
+    return "default";
+  };
+
+  const currentCompany = getCurrentCompany();
+  const isLandingPage = pathname === "/";
+
+  // Dynamic company name and description
+  const getCompanyInfo = () => {
+    switch (currentCompany) {
+      case "capital":
+        return {
+          name: "MAICER Capital",
+          description:
+            "Soluções de investimento e gestão de capital para empresas portuguesas, com foco em crescimento sustentável e retornos consistentes.",
+        };
+      case "tech":
+        return {
+          name: "MAICER Tech",
+          description:
+            "Desenvolvimento de websites modernos e soluções tecnológicas inovadoras para transformar a presença digital do seu negócio.",
+        };
+      case "law":
+        return {
+          name: "MAICER Law",
+          description:
+            "Consultoria jurídica especializada oferecendo assessoria legal completa para empresas e particulares em Portugal.",
+        };
+      case "media":
+        return {
+          name: "MAICER Media",
+          description:
+            "Transformamos negócios através da tecnologia digital, criando websites modernos e gerindo redes sociais com resultados comprovados.",
+        };
+      default:
+        return {
+          name: "MAICER",
+          description:
+            "Uma holding diversificada que oferece soluções completas em capital, tecnologia, direito e media para empresas portuguesas.",
+        };
+    }
+  };
+
+  const companyInfo = getCompanyInfo();
+
   return (
-    <footer className="bg-gray-900 text-gray-300">
+    <footer
+      className={`text-gray-300 ${
+        isLandingPage ? "bg-gray-900" : "bg-theme-primary"
+      }`}
+    >
       {/* Main Footer */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
             <h3 className="text-xl font-bold text-white">
-              <span className="text-maicer-blue">MAICER</span>
-              <span className="text-maicer-cyan ml-1">Media</span>
+              {isLandingPage ? (
+                <>
+                  <span className="text-maicer-light">MAICER</span>
+                </>
+              ) : (
+                <span className="text-theme-accent">{companyInfo.name}</span>
+              )}
             </h3>
-            <p className="text-sm">
-              Transformamos negócios através da tecnologia digital, criando
-              websites modernos e gerindo redes sociais com resultados
-              comprovados.
+            <p
+              className={`text-sm ${
+                isLandingPage ? "text-gray-300" : "text-theme-text-secondary"
+              }`}
+            >
+              {companyInfo.description}
             </p>
             {/* Social Links */}
             <div className="flex space-x-4 pt-2">
@@ -24,7 +89,9 @@ export default function Footer() {
                 href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-white transition-colors"
+                className={`transition-colors ${
+                  isLandingPage ? "hover:text-white" : "hover:text-theme-accent"
+                }`}
               >
                 <svg
                   className="w-5 h-5"
@@ -38,7 +105,9 @@ export default function Footer() {
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-white transition-colors"
+                className={`transition-colors ${
+                  isLandingPage ? "hover:text-white" : "hover:text-theme-accent"
+                }`}
               >
                 <svg
                   className="w-5 h-5"
@@ -52,7 +121,9 @@ export default function Footer() {
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-white transition-colors"
+                className={`transition-colors ${
+                  isLandingPage ? "hover:text-white" : "hover:text-theme-accent"
+                }`}
               >
                 <svg
                   className="w-5 h-5"
@@ -65,65 +136,191 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Services */}
+          {/* Navigation Links */}
           <div>
-            <h4 className="text-white font-semibold mb-4">Serviços</h4>
+            <h4 className="text-white font-semibold mb-4">
+              {isLandingPage ? "Empresas" : "Navegação"}
+            </h4>
             <ul className="space-y-2 text-sm">
-              <li>
-                <Link
-                  href="/servicos/redes-sociais"
-                  className="hover:text-white transition-colors"
-                >
-                  Gestão de Redes Sociais
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/servicos/desenvolvimento-web"
-                  className="hover:text-white transition-colors"
-                >
-                  Desenvolvimento Web
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/servicos/pacotes-digitais"
-                  className="hover:text-white transition-colors"
-                >
-                  Pacotes Integrados
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/orcamento"
-                  className="hover:text-white transition-colors"
-                >
-                  Orçamento Personalizado
-                </Link>
-              </li>
+              {isLandingPage ? (
+                <>
+                  <li>
+                    <Link
+                      href="/capital"
+                      className={`transition-colors ${
+                        isLandingPage
+                          ? "hover:text-white"
+                          : "hover:text-theme-accent"
+                      }`}
+                    >
+                      MAICER Capital
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/tech"
+                      className={`transition-colors ${
+                        isLandingPage
+                          ? "hover:text-white"
+                          : "hover:text-theme-accent"
+                      }`}
+                    >
+                      MAICER Tech
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/law"
+                      className={`transition-colors ${
+                        isLandingPage
+                          ? "hover:text-white"
+                          : "hover:text-theme-accent"
+                      }`}
+                    >
+                      MAICER Law
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/media"
+                      className={`transition-colors ${
+                        isLandingPage
+                          ? "hover:text-white"
+                          : "hover:text-theme-accent"
+                      }`}
+                    >
+                      MAICER Media
+                    </Link>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li>
+                    <Link
+                      href="/"
+                      className={`transition-colors ${
+                        isLandingPage
+                          ? "hover:text-white"
+                          : "hover:text-theme-accent"
+                      }`}
+                    >
+                      Início
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/sobre"
+                      className={`transition-colors ${
+                        isLandingPage
+                          ? "hover:text-white"
+                          : "hover:text-theme-accent"
+                      }`}
+                    >
+                      Sobre Nós
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/contacto"
+                      className={`transition-colors ${
+                        isLandingPage
+                          ? "hover:text-white"
+                          : "hover:text-theme-accent"
+                      }`}
+                    >
+                      Contacto
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/orcamento"
+                      className={`transition-colors ${
+                        isLandingPage
+                          ? "hover:text-white"
+                          : "hover:text-theme-accent"
+                      }`}
+                    >
+                      Orçamento
+                    </Link>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
 
-          {/* Company */}
+          {/* Services/Other Companies */}
           <div>
-            <h4 className="text-white font-semibold mb-4">Empresa</h4>
+            <h4 className="text-white font-semibold mb-4">
+              {isLandingPage ? "Soluções" : "Outras Empresas"}
+            </h4>
             <ul className="space-y-2 text-sm">
-              <li>
-                <Link
-                  href="/sobre"
-                  className="hover:text-white transition-colors"
-                >
-                  Sobre Nós
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/contacto"
-                  className="hover:text-white transition-colors"
-                >
-                  Contacto
-                </Link>
-              </li>
+              {isLandingPage ? (
+                <>
+                  <li>Investimentos & Capital</li>
+                  <li>Desenvolvimento Web</li>
+                  <li>Consultoria Jurídica</li>
+                  <li>Marketing Digital</li>
+                </>
+              ) : (
+                <>
+                  {currentCompany !== "capital" && (
+                    <li>
+                      <Link
+                        href="/capital"
+                        className={`transition-colors ${
+                          isLandingPage
+                            ? "hover:text-white"
+                            : "hover:text-theme-accent"
+                        }`}
+                      >
+                        MAICER Capital
+                      </Link>
+                    </li>
+                  )}
+                  {currentCompany !== "tech" && (
+                    <li>
+                      <Link
+                        href="/tech"
+                        className={`transition-colors ${
+                          isLandingPage
+                            ? "hover:text-white"
+                            : "hover:text-theme-accent"
+                        }`}
+                      >
+                        MAICER Tech
+                      </Link>
+                    </li>
+                  )}
+                  {currentCompany !== "law" && (
+                    <li>
+                      <Link
+                        href="/law"
+                        className={`transition-colors ${
+                          isLandingPage
+                            ? "hover:text-white"
+                            : "hover:text-theme-accent"
+                        }`}
+                      >
+                        MAICER Law
+                      </Link>
+                    </li>
+                  )}
+                  {currentCompany !== "media" && (
+                    <li>
+                      <Link
+                        href="/media"
+                        className={`transition-colors ${
+                          isLandingPage
+                            ? "hover:text-white"
+                            : "hover:text-theme-accent"
+                        }`}
+                      >
+                        MAICER Media
+                      </Link>
+                    </li>
+                  )}
+                </>
+              )}
             </ul>
           </div>
 
@@ -147,7 +344,11 @@ export default function Footer() {
                 </svg>
                 <a
                   href="tel:+351000000000"
-                  className="hover:text-white transition-colors"
+                  className={`transition-colors ${
+                    isLandingPage
+                      ? "hover:text-white"
+                      : "hover:text-theme-accent"
+                  }`}
                 >
                   +351 000 000 000
                 </a>
@@ -167,10 +368,14 @@ export default function Footer() {
                   />
                 </svg>
                 <a
-                  href="mailto:geral@maicertech.pt"
-                  className="hover:text-white transition-colors"
+                  href="mailto:info@maicer.pt"
+                  className={`transition-colors ${
+                    isLandingPage
+                      ? "hover:text-white"
+                      : "hover:text-theme-accent"
+                  }`}
                 >
-                  geral@maicertech.pt
+                  info@maicer.pt
                 </a>
               </li>
               <li className="flex items-start">
@@ -201,28 +406,40 @@ export default function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-gray-800">
+      <div
+        className={`border-t ${
+          isLandingPage ? "border-gray-800" : "border-theme-secondary"
+        }`}
+      >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
             <div className="text-sm text-center sm:text-left">
-              <p>&copy; 2024 MAICER TECH. Todos os direitos reservados.</p>
+              <p>
+                &copy; 2024 {companyInfo.name}. Todos os direitos reservados.
+              </p>
             </div>
             <div className="flex space-x-6 text-sm">
               <Link
                 href="/privacidade"
-                className="hover:text-white transition-colors"
+                className={`transition-colors ${
+                  isLandingPage ? "hover:text-white" : "hover:text-theme-accent"
+                }`}
               >
                 Política de Privacidade
               </Link>
               <Link
                 href="/termos"
-                className="hover:text-white transition-colors"
+                className={`transition-colors ${
+                  isLandingPage ? "hover:text-white" : "hover:text-theme-accent"
+                }`}
               >
                 Termos de Serviço
               </Link>
               <Link
                 href="/cookies"
-                className="hover:text-white transition-colors"
+                className={`transition-colors ${
+                  isLandingPage ? "hover:text-white" : "hover:text-theme-accent"
+                }`}
               >
                 Cookies
               </Link>

@@ -1,76 +1,279 @@
 @import "tailwindcss";
 
 @theme {
-    /* Colors */
-    --color-maicer-blue: #143d8f;
-    --color-maicer-cyan: #1ca3e4;
-    --color-maicer-light: #ffffff;
+    /* MAICER Main Colors (Landing page/General) */
+    --color-maicer-primary: #1f2937;     /* gray-800 */
+    --color-maicer-secondary: #374151;   /* gray-700 */
+    --color-maicer-accent: #ffffff;      /* white */
+    --color-maicer-light: #ffffff;       /* white */
 
-    /* Additional shades */
-    --color-maicer-blue-dark: #0f2d6b;
-    --color-maicer-blue-light: #1e54b7;
-    --color-maicer-cyan-dark: #1689c0;
-    --color-maicer-cyan-light: #3db5ed;
+    /* Media Colors */
+    --color-media-blue: #143D8F;
+    --color-media-cyan: #137DC7;
+    --color-media-light: #BEE3F8;
+
+    /* Additional Media shades */
+    --color-media-blue-dark: #0F2A5F;
+    --color-media-blue-light: #4299E1;
+    --color-media-cyan-dark: #0F2A5F;
+    --color-media-cyan-light: #BEE3F8;
+
+    /* Capital Colors (Red/Financial theme) */
+    --color-capital-primary: #EF0307;
+    --color-capital-secondary: #FF6666;
+    --color-capital-accent: #FF9999;
+    --color-capital-light: #FFE6E6;
+    --color-capital-hover: #CC0205;
+    --color-capital-button: #EF0307;
+    --color-capital-button-hover: #CC0205;
+
+    /* Tech Colors (Gray/Orange Engineering theme) */
+    --color-tech-primary: #2D3748;
+    --color-tech-secondary: #4A5568;
+    --color-tech-accent: #F7931E;
+    --color-tech-light: #E2E8F0;
+    --color-tech-hover: #1A202C;
+    --color-tech-button: #F7931E;
+    --color-tech-button-hover: #E67E22;
+
+    /* Law Colors (Green/Legal theme) */
+    --color-law-primary: #226C35;
+    --color-law-secondary: #238F3D;
+    --color-law-accent: #48BB78;
+    --color-law-light: #C6F6D5;
+    --color-law-hover: #1A5629;
+    --color-law-button: #238F3D;
+    --color-law-button-hover: #1A5629;
 
     /* Font Family */
     --font-family-poppins: 'Poppins', sans-serif;
+
+    /* Additional animation and layout variables */
+    --animation-duration: 0.3s;
+    --animation-curve: cubic-bezier(0.4, 0, 0.2, 1);
+    --border-radius-xl: 1rem;
+    --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-medium: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-large: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 }
 
 /* Base styles */
 @layer base {
     html {
         font-family: var(--font-family-poppins), sans-serif;
+        scroll-behavior: smooth;
     }
 
     body {
         background-color: var(--color-maicer-light);
         color: var(--color-gray-900);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        line-height: 1.6;
     }
 
-    html {
-        scroll-behavior: smooth;
+    * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #f1f5f9;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
+    }
+
+    /* Dynamic theme variables - default to landing page */
+    :root {
+        --theme-primary: var(--color-maicer-primary);
+        --theme-secondary: var(--color-maicer-secondary);
+        --theme-accent: var(--color-maicer-accent);
+        --theme-text: var(--color-white);
+        --theme-text-secondary: var(--color-gray-300);
+        --theme-hover: var(--color-gray-700);
+        --theme-button: var(--color-white);
+        --theme-button-text: var(--color-gray-900);
+        --theme-button-hover: var(--color-gray-200);
+    }
+
+    /* Company-specific theme classes */
+    .theme-capital {
+        --theme-primary: var(--color-capital-primary);
+        --theme-secondary: var(--color-capital-secondary);
+        --theme-accent: var(--color-capital-accent);
+        --theme-text: var(--color-white);
+        --theme-text-secondary: var(--color-capital-light);
+        --theme-hover: var(--color-capital-hover);
+        --theme-button: var(--color-capital-button);
+        --theme-button-text: var(--color-white);
+        --theme-button-hover: var(--color-capital-button-hover);
+    }
+
+    .theme-tech {
+        --theme-primary: var(--color-tech-primary);
+        --theme-secondary: var(--color-tech-secondary);
+        --theme-accent: var(--color-tech-accent);
+        --theme-text: var(--color-white);
+        --theme-text-secondary: var(--color-tech-light);
+        --theme-hover: var(--color-tech-hover);
+        --theme-button: var(--color-tech-button);
+        --theme-button-text: var(--color-white);
+        --theme-button-hover: var(--color-tech-button-hover);
+    }
+
+    .theme-law {
+        --theme-primary: var(--color-law-primary);
+        --theme-secondary: var(--color-law-secondary);
+        --theme-accent: var(--color-law-accent);
+        --theme-text: var(--color-white);
+        --theme-text-secondary: var(--color-law-light);
+        --theme-hover: var(--color-law-hover);
+        --theme-button: var(--color-law-button);
+        --theme-button-text: var(--color-white);
+        --theme-button-hover: var(--color-law-button-hover);
+    }
+
+    .theme-media {
+        --theme-primary: var(--color-media-blue);
+        --theme-secondary: var(--color-media-cyan);
+        --theme-accent: var(--color-media-blue-light);
+        --theme-text: var(--color-white);
+        --theme-text-secondary: var(--color-media-cyan-light);
+        --theme-hover: var(--color-media-blue-dark);
+        --theme-button: var(--color-media-cyan);
+        --theme-button-text: var(--color-white);
+        --theme-button-hover: var(--color-media-cyan-dark);
     }
 }
 
 /* Component classes */
 @layer components {
-    .btn-primary {
-        background-color: var(--color-maicer-blue);
-        color: white;
+    /* Themed buttons that adapt to current company */
+    .btn-theme-primary {
+        background-color: var(--theme-button);
+        color: var(--theme-button-text);
         padding: 0.75rem 1.5rem;
         border-radius: 0.5rem;
         font-weight: 500;
-        transition: background-color 0.2s;
+        transition: all var(--animation-duration) var(--animation-curve);
+        box-shadow: var(--shadow-soft);
     }
 
-    .btn-primary:hover {
-        background-color: var(--color-maicer-blue-dark);
+    .btn-theme-primary:hover {
+        background-color: var(--theme-button-hover);
+        transform: translateY(-1px);
+        box-shadow: var(--shadow-medium);
     }
 
-    .btn-secondary {
-        background-color: var(--color-maicer-cyan);
-        color: white;
+    .btn-theme-secondary {
+        background-color: transparent;
+        color: var(--theme-accent);
+        border: 2px solid var(--theme-accent);
         padding: 0.75rem 1.5rem;
         border-radius: 0.5rem;
         font-weight: 500;
-        transition: background-color 0.2s;
+        transition: all var(--animation-duration) var(--animation-curve);
     }
 
-    .btn-secondary:hover {
-        background-color: var(--color-maicer-cyan-dark);
+    .btn-theme-secondary:hover {
+        background-color: var(--theme-accent);
+        color: var(--theme-primary);
+        transform: translateY(-1px);
     }
 
-    .gradient-text {
-        background: linear-gradient(to right, var(--color-maicer-blue), var(--color-maicer-cyan));
+    /* Enhanced card component */
+    .card-enhanced {
+        background: white;
+        border-radius: var(--border-radius-xl);
+        box-shadow: var(--shadow-soft);
+        transition: all var(--animation-duration) var(--animation-curve);
+        overflow: hidden;
+    }
+
+    .card-enhanced:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-large);
+    }
+
+    /* Company-specific gradient texts */
+    .gradient-text-capital {
+        background: linear-gradient(to right, var(--color-capital-primary), var(--color-capital-accent));
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
+    }
+
+    .gradient-text-tech {
+        background: linear-gradient(to right, var(--color-tech-primary), var(--color-tech-accent));
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .gradient-text-law {
+        background: linear-gradient(to right, var(--color-law-primary), var(--color-law-accent));
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .gradient-text-media {
+        background: linear-gradient(to right, var(--color-media-blue), var(--color-media-cyan));
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    /* Multi-color gradient for homepage */
+    .gradient-text-multi {
+        background: linear-gradient(45deg,
+        var(--color-media-blue),
+        var(--color-tech-accent),
+        var(--color-capital-primary),
+        var(--color-law-primary)
+        );
+        background-size: 300% 300%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: gradient-shift 4s ease infinite;
     }
 }
 
 /* Utilities */
 @layer utilities {
-    /* Animations */
+    /* Theme-based utilities */
+    .bg-theme-primary { background-color: var(--theme-primary); }
+    .bg-theme-secondary { background-color: var(--theme-secondary); }
+    .bg-theme-hover { background-color: var(--theme-hover); }
+    .bg-theme-button { background-color: var(--theme-button); }
+
+    .text-theme-primary { color: var(--theme-primary); }
+    .text-theme-accent { color: var(--theme-accent); }
+    .text-theme-text { color: var(--theme-text); }
+    .text-theme-text-secondary { color: var(--theme-text-secondary); }
+    .text-theme-button { color: var(--theme-button-text); }
+
+    .border-theme-secondary { border-color: var(--theme-secondary); }
+
+    .hover\:bg-theme-hover:hover { background-color: var(--theme-hover); }
+    .hover\:bg-theme-button-hover:hover { background-color: var(--theme-button-hover); }
+    .hover\:text-theme-accent:hover { color: var(--theme-accent); }
+
+    /* Enhanced Animations */
     @keyframes fade-in {
         from {
             opacity: 0;
@@ -91,6 +294,47 @@
         }
     }
 
+    @keyframes float {
+        0%, 100% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+
+    @keyframes gradient-shift {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    @keyframes pulse-slow {
+        0%, 100% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.5;
+        }
+    }
+
+    @keyframes scale-in {
+        from {
+            transform: scale(0.9);
+            opacity: 0;
+        }
+        to {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
     .animate-fade-in {
         animation: fade-in 0.5s ease-in-out;
     }
@@ -99,19 +343,123 @@
         animation: slide-up 0.5s ease-out;
     }
 
-    /* Add smooth scroll behavior for anchor links */
-    html {
-        scroll-behavior: smooth;
+    .animate-float {
+        animation: float 6s ease-in-out infinite;
     }
 
-    /* Optional: Add focus styles for accessibility */
+    .animate-gradient {
+        animation: gradient-shift 3s ease infinite;
+    }
+
+    .animate-pulse-slow {
+        animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    .animate-scale-in {
+        animation: scale-in 0.5s ease-out;
+    }
+
+    /* Responsive text utilities */
+    @media (max-width: 640px) {
+        .text-responsive-xl {
+            font-size: 1.25rem;
+            line-height: 1.75rem;
+        }
+
+        .text-responsive-4xl {
+            font-size: 2rem;
+            line-height: 2.5rem;
+        }
+
+        .text-responsive-6xl {
+            font-size: 3rem;
+            line-height: 1;
+        }
+    }
+
+    @media (min-width: 641px) {
+        .text-responsive-xl {
+            font-size: 1.5rem;
+            line-height: 2rem;
+        }
+
+        .text-responsive-4xl {
+            font-size: 2.5rem;
+            line-height: 1;
+        }
+
+        .text-responsive-6xl {
+            font-size: 4rem;
+            line-height: 1;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .text-responsive-xl {
+            font-size: 1.875rem;
+            line-height: 2.25rem;
+        }
+
+        .text-responsive-4xl {
+            font-size: 3.5rem;
+            line-height: 1;
+        }
+
+        .text-responsive-6xl {
+            font-size: 5rem;
+            line-height: 1;
+        }
+    }
+
+    /* Enhanced focus styles for accessibility */
+    .focus-ring {
+        transition: all var(--animation-duration) var(--animation-curve);
+    }
+
+    .focus-ring:focus {
+        outline: 2px solid var(--theme-accent);
+        outline-offset: 2px;
+        transform: scale(1.02);
+    }
+
+    /* Hover effects */
+    .hover-lift {
+        transition: transform var(--animation-duration) var(--animation-curve);
+    }
+
+    .hover-lift:hover {
+        transform: translateY(-2px);
+    }
+
+    .hover-scale {
+        transition: transform var(--animation-duration) var(--animation-curve);
+    }
+
+    .hover-scale:hover {
+        transform: scale(1.05);
+    }
+
+    /* Glass morphism effects */
+    .glass {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .glass-dark {
+        background: rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Focus styles for accessibility */
     a:focus,
     button:focus {
-        outline: 2px solid var(--color-maicer-cyan);
+        outline: 2px solid var(--theme-accent);
         outline-offset: 2px;
     }
 
-    /* Optional: Skip to main content link for accessibility */
+    /* Skip to main content link for accessibility */
     .skip-to-main {
         position: absolute;
         left: -9999px;
@@ -122,8 +470,8 @@
         position: fixed;
         top: 1rem;
         left: 1rem;
-        background: var(--color-maicer-blue);
-        color: white;
+        background: var(--theme-primary);
+        color: var(--theme-text);
         padding: 0.5rem 1rem;
         border-radius: 0.25rem;
         text-decoration: none;
