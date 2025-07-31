@@ -3,6 +3,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,7 +15,7 @@ export default function Header() {
           {/* Mobile menu button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-gray-100"
+            className="block md:hidden p-3 w-12 h-12 rounded-lg hover:bg-gray-100"
             aria-label="Toggle menu"
           >
             <svg
@@ -41,24 +42,46 @@ export default function Header() {
             </svg>
           </button>
           {/* Logo */}
-          <div className="absolute left-1">
-            <Link href="/" className="flex items-center">
-              <span className="text-xl sm:text-2xl font-bold">
-                <span className="text-maicer-blue">MAICER</span>
-                <span className="text-maicer-cyan ml-1">TECH</span>
-              </span>
+          <div className="absolute left-1 right-1 flex justify-center md:static md:justify-start w-full md:w-auto items-center">
+            <Link href={"/"}>
+              {/* Mobile logo */}
+              <img
+                src="/icons/MAICER%20Main%20symbol.png"
+                alt="Maicer Logo"
+                className="block md:hidden h-10"
+              />
+
+              {/* Desktop/tablet logo */}
+              <img
+                src="/icons/MAICER%20Transparent%20logo.png"
+                alt="Maicer Logo"
+                className="hidden md:block h-10 mr-4"
+              />
             </Link>
+            {/* Navigation links go here */}
           </div>
           {/* Desktop Navigation */}
           <div>
             <div className="hidden md:flex items-center space-x-8 mx-auto">
               <Link
+                href="/media"
+                className="text-gray-700 hover:text-maicer-blue transition-colors"
+              >
+                Media
+              </Link>
+              <Link
+                href="/capital"
+                className="text-gray-700 hover:text-maicer-blue transition-colors"
+              >
+                Capital
+              </Link>
+              {/*<Link
                 href="/"
                 className="text-gray-700 hover:text-maicer-blue transition-colors"
               >
                 Início
-              </Link>
-              <div className="relative group">
+              </Link>*/}
+              {/*<div className="relative group">
                 <button className="text-gray-700 hover:text-maicer-blue transition-colors flex items-center">
                   Serviços
                   <svg
@@ -75,7 +98,7 @@ export default function Header() {
                     />
                   </svg>
                 </button>
-                {/* Dropdown */}
+                 Dropdown
                 <div className="absolute left-0 mt-2 w-64 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                   <Link
                     href="/servicos/redes-sociais"
@@ -96,13 +119,13 @@ export default function Header() {
                     Pacotes Integrados
                   </Link>
                 </div>
-              </div>
-              <Link
+              </div>*/}
+              {/*              <Link
                 href="/portfolio"
                 className="text-gray-700 hover:text-maicer-blue transition-colors"
               >
                 Portfólio
-              </Link>
+              </Link>*/}
               <Link
                 href="/sobre"
                 className="text-gray-700 hover:text-maicer-blue transition-colors"
@@ -110,28 +133,12 @@ export default function Header() {
                 Sobre
               </Link>
               <Link
-                href="/blog"
-                className="text-gray-700 hover:text-maicer-blue transition-colors"
-              >
-                Blog
-              </Link>
-              <Link
                 href="/contacto"
                 className="text-gray-700 hover:text-maicer-blue transition-colors"
               >
-                Contacto
+                Contactos
               </Link>
             </div>
-
-            {/* CTA Button */}
-            {/*          <div className="hidden md:block">
-            <Link
-              href="/orcamento"
-              className="bg-maicer-cyan text-white px-4 py-2 rounded-lg font-medium hover:bg-maicer-cyan-dark transition-colors"
-            >
-              Orçamento Grátis
-            </Link>
-          </div>*/}
           </div>
         </div>
 

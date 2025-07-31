@@ -11,7 +11,7 @@ export default function Footer() {
           <div className="space-y-4">
             <h3 className="text-xl font-bold text-white">
               <span className="text-maicer-blue">MAICER</span>
-              <span className="text-maicer-cyan ml-1">TECH</span>
+              <span className="text-maicer-cyan ml-1">Media</span>
             </h3>
             <p className="text-sm">
               Transformamos negócios através da tecnologia digital, criando
@@ -118,22 +118,6 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/portfolio"
-                  className="hover:text-white transition-colors"
-                >
-                  Portfólio
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/blog"
-                  className="hover:text-white transition-colors"
-                >
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link
                   href="/contacto"
                   className="hover:text-white transition-colors"
                 >
@@ -212,26 +196,6 @@ export default function Footer() {
                 <span>Portugal</span>
               </li>
             </ul>
-
-            {/* Newsletter */}
-            <div>
-              <h4 className="text-white font-semibold mb-3">Newsletter</h4>
-              <p className="text-sm mb-3">Receba dicas de marketing digital</p>
-              <form className="space-y-2">
-                <input
-                  type="email"
-                  placeholder="Seu email"
-                  className="w-full px-3 py-2 bg-gray-800 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-maicer-cyan"
-                  required
-                />
-                <button
-                  type="submit"
-                  className="w-full bg-maicer-cyan text-white px-3 py-2 rounded-lg text-sm font-medium hover:bg-maicer-cyan-dark transition-colors"
-                >
-                  Subscrever
-                </button>
-              </form>
-            </div>
           </div>
         </div>
       </div>

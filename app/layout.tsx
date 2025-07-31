@@ -12,9 +12,8 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "MAICER TECH - Soluções Digitais",
-  description:
-    "Transforme o seu negócio com tecnologia digital. Websites modernos e gestão profissional de redes sociais.",
+  title: "MAICER",
+  description: "Transforme o seu negócio",
 };
 
 export default function RootLayout({
