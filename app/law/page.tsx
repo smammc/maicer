@@ -147,7 +147,7 @@ export default function LawPage() {
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
-              {/* Corporate Law Card */}
+              {/* Corporate law Card */}
               <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
                 <div className="h-40 sm:h-48 bg-gradient-to-br from-law-accent to-law-button flex items-center justify-center">
                   <svg
@@ -228,7 +228,7 @@ export default function LawPage() {
                 </div>
               </div>
 
-              {/* Real Estate Law Card */}
+              {/* Real Estate law Card */}
               <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
                 <div className="h-40 sm:h-48 bg-gradient-to-br from-law-primary to-law-secondary flex items-center justify-center">
                   <svg
@@ -309,7 +309,7 @@ export default function LawPage() {
                 </div>
               </div>
 
-              {/* Civil Law Card */}
+              {/* Civil law Card */}
               <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
                 <div className="h-40 sm:h-48 bg-gradient-to-br from-law-button to-law-accent flex items-center justify-center">
                   <svg

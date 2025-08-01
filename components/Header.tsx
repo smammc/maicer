@@ -11,10 +11,10 @@ interface NavigationItem {
 }
 
 const navigationItems: NavigationItem[] = [
-  { href: "/capital", label: "Capital" },
+  { href: "/capital", label: "capital" },
   { href: "/tech", label: "Tech" },
-  { href: "/law", label: "Law" },
-  { href: "/media", label: "Media" },
+  { href: "/law", label: "law" },
+  { href: "/media", label: "media" },
 ];
 
 export default function Header() {
@@ -108,28 +108,33 @@ export default function Header() {
               )}
             </svg>
           </button>
-          {/*
 
-           // Logo
+          {/*Logo*/}
           <div className="absolute left-1 right-1 flex justify-center md:static md:justify-start w-full md:w-auto items-center">
             <Link href="/" onClick={closeMenu}>
-               // Mobile logo
+              {/* Mobile logo */}
               <img
-                src="/icons/MAICER%20Main%20symbol.png"
+                src={
+                  ["default", "tech"].includes(currentCompany)
+                    ? `/icons/default/MAICER Inverted symbol.png`
+                    : `/icons/${currentCompany}/MAICER Inverted symbol.png`
+                }
                 alt="Maicer Logo"
                 className="block md:hidden h-10"
               />
 
-               // Desktop/tablet logo
+              {/* Desktop/tablet logo */}
               <img
-                src="/icons/MAICER%20Transparent%20logo.png"
+                src={
+                  ["default", "tech"].includes(currentCompany)
+                    ? `/icons/default/MAICER Transparent logo.png`
+                    : `/icons/${currentCompany}/MAICER Transparent logo.png`
+                }
                 alt="Maicer Logo"
                 className="hidden md:block h-10 mr-4"
               />
             </Link>
           </div>
-*/}
-
           {/* Desktop Navigation */}
           <div>
             <div className="hidden md:flex items-center space-x-8 mx-auto">

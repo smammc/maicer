@@ -228,7 +228,7 @@ export default function CapitalPage() {
                 </div>
               </div>
 
-              {/* Capital Management Card */}
+              {/* capital Management Card */}
               <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
                 <div className="h-40 sm:h-48 bg-gradient-to-br from-capital-primary to-capital-secondary flex items-center justify-center">
                   <svg

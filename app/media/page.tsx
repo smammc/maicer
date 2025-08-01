@@ -146,7 +146,7 @@ export default function MediaPage() {
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
-              {/* Social Media Management Card */}
+              {/* Social media Management Card */}
               <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
                 <div className="h-40 sm:h-48 bg-gradient-to-br from-media-cyan to-media-cyan-light flex items-center justify-center">
                   <svg

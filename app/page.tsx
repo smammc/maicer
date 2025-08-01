@@ -24,7 +24,7 @@ const companies = [
     color: "from-purple-500 to-pink-500",
     icon: Megaphone,
     services: [
-      "Social Media Management",
+      "Social media Management",
       "Digital Marketing",
       "Brand Strategy",
     ],
@@ -39,7 +39,7 @@ const companies = [
     services: [
       "Real Estate Investment",
       "Portfolio Management",
-      "Strategic Capital",
+      "Strategic capital",
     ],
   },
   {
@@ -58,7 +58,7 @@ const companies = [
       "Consultoria jurídica especializada e assessoria legal completa",
     color: "from-amber-500 to-orange-500",
     icon: Scale,
-    services: ["Legal Consulting", "Corporate Law", "Compliance"],
+    services: ["Legal Consulting", "Corporate law", "Compliance"],
   },
 ];
 
@@ -121,11 +121,9 @@ export default function HomePage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6">
+            <h1 className="text-5xl md:text-7xl font-bold text-black mb-6 gap-2">
               <span className="block">Soluções</span>
-              <span className="block bg-gradient-to-r from-purple-600 via-blue-600 to-green-600 bg-clip-text text-transparent">
-                Integradas
-              </span>
+              <span className="block text-gray-500">Integradas</span>
               <span className="block">para o Seu Sucesso</span>
             </h1>
           </motion.div>
@@ -148,7 +146,7 @@ export default function HomePage() {
           >
             <Link
               href="#companies"
-              className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
+              className="bg-gradient-to-r from-gray-700 to-black text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
             >
               Explorar Soluções
               <ArrowRight className="w-5 h-5" />

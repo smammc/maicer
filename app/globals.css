@@ -7,18 +7,18 @@
     --color-maicer-accent: #ffffff;      /* white */
     --color-maicer-light: #ffffff;       /* white */
 
-    /* Media Colors */
+    /* media Colors */
     --color-media-blue: #143D8F;
     --color-media-cyan: #137DC7;
     --color-media-light: #BEE3F8;
 
-    /* Additional Media shades */
+    /* Additional media shades */
     --color-media-blue-dark: #0F2A5F;
     --color-media-blue-light: #4299E1;
     --color-media-cyan-dark: #0F2A5F;
     --color-media-cyan-light: #BEE3F8;
 
-    /* Capital Colors (Red/Financial theme) */
+    /* capital Colors (Red/Financial theme) */
     --color-capital-primary: #EF0307;
     --color-capital-secondary: #FF6666;
     --color-capital-accent: #FF9999;
@@ -36,7 +36,7 @@
     --color-tech-button: #F7931E;
     --color-tech-button-hover: #E67E22;
 
-    /* Law Colors (Green/Legal theme) */
+    /* law Colors (Green/Legal theme) */
     --color-law-primary: #226C35;
     --color-law-secondary: #238F3D;
     --color-law-accent: #48BB78;
