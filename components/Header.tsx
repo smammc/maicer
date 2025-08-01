@@ -127,8 +127,8 @@ export default function Header() {
               <img
                 src={
                   ["default", "tech"].includes(currentCompany)
-                    ? `/icons/default/MAICER Transparent logo.png`
-                    : `/icons/${currentCompany}/MAICER Transparent logo.png`
+                    ? `/icons/default/MAICER Transparent Logo.png`
+                    : `/icons/${currentCompany}/MAICER Transparent Logo.png`
                 }
                 alt="Maicer Logo"
                 className="hidden md:block h-10 mr-4"
